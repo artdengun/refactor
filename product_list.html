@@ -25,47 +25,25 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <style>
+    /* Area upload */
     .upload-area {
       background: rgba(255, 255, 255, 0.05);
       border: 1px dashed #ffc107;
-      border-radius: 10px;
-      padding: 25px;
+      border-radius: 12px;
+      padding: 40px;
+      transition: 0.3s;
     }
 
-    #viewCurrentDataBtn {
-      border-width: 2px;
-      transition: 0.3s ease;
+    .upload-area:hover {
+      background: rgba(255, 193, 7, 0.05);
+      transform: scale(1.02);
     }
 
-    #viewCurrentDataBtn:hover {
-      background-color: #ffc107;
-      color: #101820;
-      transform: scale(1.05);
-    }
-
-    /* STATUS ANALISIS */
-    .process-status {
-      margin-top: 40px;
-      background-color: #101820;
-      padding: 25px;
-      border-radius: 10px;
-      color: #f8f9fa;
-      box-shadow: 0 4px 10px rgba(255, 193, 7, 0.15);
-    }
-
-    .process-status h5 {
-      color: #ffc107;
-      margin-bottom: 15px;
-    }
-
-    .process-intro {
-      font-size: 0.95rem;
-      color: #adb5bd;
-      margin-bottom: 15px;
-      line-height: 1.6;
-    }
-
+    /* Step process */
     .process-step {
       display: flex;
       justify-content: space-between;
@@ -75,46 +53,70 @@
 
     .status-badge {
       font-weight: 600;
-      font-size: 0.95rem;
+      transition: color 0.3s, transform 0.3s;
     }
 
-    .waiting {
-      color: #adb5bd;
+    .done {
+      color: #198754;
+      transform: scale(1.1);
     }
 
     .processing {
       color: #0dcaf0;
     }
 
-    .done {
-      color: #198754;
-    }
-
-    /* Progress bar */
-    .progress-container {
-      margin-top: 20px;
-    }
-
-    .progress {
-      height: 12px;
-      border-radius: 10px;
-      background-color: rgba(255, 255, 255, 0.1);
-      overflow: hidden;
+    .waiting {
+      color: #6c757d;
     }
 
     .progress-bar {
       background-color: #ffc107;
-      width: 0%;
-      transition: width 0.5s ease-in-out;
+      transition: width 0.5s;
+    }
+
+    .progress-bar.bg-success {
+      box-shadow: 0 0 15px rgba(25, 135, 84, 0.8);
+      transition: box-shadow 0.5s ease;
+    }
+
+    /* Loading overlay */
+    #loadingOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      font-size: 18px;
+      display: none;
+    }
+
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+      color: #ffc107;
     }
   </style>
 </head>
 
 <body class="service-details-page">
 
+  <!-- Loading overlay -->
+  <div id="loadingOverlay">
+    <div class="spinner-border mb-3" role="status"></div>
+    <span>Menyiapkan proses analisis...</span>
+  </div>
+
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <div
+      class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
         <h1 class="sitename">SMART REVIEW ANALYZER</h1>
@@ -122,22 +124,23 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html" >Beranda</a></li>
+          <li><a href="index.html">Beranda</a></li>
           <li><a href="product_list.html" class="active">Analisis Ulasan</a></li>
           <li><a href="hasil_ulasan.html">Hasil & Rating</a></li>
           <li class="dropdown">
-          <a href="grafik_statistik.html"><span>Grafik & Statistik</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-          <ul>
-            <li><a href="akulaku.html">Aku Laku</a></li>
-            <li><a href="adakami.html">Adakami</a></li>
-            <li><a href="easycash.html">Easycash</a></li>
-            <li><a href="pinjamwinwin.html">Pinjam Winwin</a></li>
-            <li><a href="tunaiku.html">Tunaiku</a></li>
-            <li><a href="pinjamgo.html">Pinjam GO</a></li>
-            <li><a href="indodana.html">Indodana</a></li>
-            <li><a href="kreditpintar.html">Kredit Pintar</a></li>
-          </ul>
-        </li>
+            <a href="grafik_statistik.html"><span>Grafik & Statistik</span> <i
+                class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="akulaku.html">Aku Laku</a></li>
+              <li><a href="adakami.html">Adakami</a></li>
+              <li><a href="easycash.html">Easycash</a></li>
+              <li><a href="pinjamwinwin.html">Pinjam Winwin</a></li>
+              <li><a href="tunaiku.html">Tunaiku</a></li>
+              <li><a href="pinjamgo.html">Pinjam GO</a></li>
+              <li><a href="indodana.html">Indodana</a></li>
+              <li><a href="kreditpintar.html">Kredit Pintar</a></li>
+            </ul>
+          </li>
           <li><a href="tentang_sistem.html">Tentang Sistem</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -177,48 +180,26 @@
             </button>
           </form>
 
-        <a href="hasil_ulasan.html" target="_blank" class="btn btn-outline-warning btn-lg px-4 py-2 mt-3" id="viewCurrentDataBtn">
-          <i class="bi bi-bar-chart-line fs-5 me-1"></i> Lihat Rating Aplikasi Saat Ini
-        </a>
+          <br><br>
+          <a href="hasil_ulasan.html" target="_blank" class="btn btn-outline-warning btn-lg px-4 py-2 mt-3"
+            id="viewCurrentDataBtn">
+            <i class="bi bi-bar-chart-line fs-5 me-1"></i> Lihat Rating Aplikasi Saat Ini
+          </a>
 
           <!-- Status Proses Analisis -->
-          <div class="process-status text-start mt-5">
-            <h5><i class="bi bi-gear"></i> Status Proses Analisis</h5>
-            <p class="process-intro">
-              Proses analisis data dilakukan melalui beberapa tahapan utama untuk mengubah teks mentah menjadi data yang siap diprediksi oleh model.  
-              Tahapan tersebut meliputi: <strong>Case Folding</strong> (mengubah huruf menjadi format standar),
-              <strong>Cleansing</strong> (menghapus karakter tak relevan),
-              <strong>Normalization</strong> (menyeragamkan penulisan kata),
-              <strong>Tokenizing</strong> (memecah kalimat menjadi kata),
-              <strong>Stopword Removal</strong> (menghapus kata umum yang tidak bermakna penting),
-              dan <strong>Stemming</strong> (mengembalikan kata ke bentuk dasarnya).  
-              Semua proses dijalankan secara berurutan untuk memastikan hasil analisis yang akurat sebelum diproses oleh model <em>IndoBERT Multitask</em>.
-            </p>
+          <div id="processContainer" class="mt-5 text-start d-none">
+            <h5 class="text-warning"><i class="bi bi-gear"></i> Proses Analisis Berjalan</h5>
+            <div class="process-step"><span>Case Folding</span><span class="status-badge waiting">Menunggu</span></div>
+            <div class="process-step"><span>Cleansing</span><span class="status-badge waiting">Menunggu</span></div>
+            <div class="process-step"><span>Normalization</span><span class="status-badge waiting">Menunggu</span></div>
+            <div class="process-step"><span>Tokenizing</span><span class="status-badge waiting">Menunggu</span></div>
+            <div class="process-step"><span>Stopword Removal</span><span class="status-badge waiting">Menunggu</span></div>
+            <div class="process-step"><span>Stemming</span><span class="status-badge waiting">Menunggu</span></div>
 
-            <div class="process-step"><span>Case Folding</span><span class="status-badge waiting">—</span></div>
-            <div class="process-step"><span>Cleansing</span><span class="status-badge waiting">—</span></div>
-            <div class="process-step"><span>Normalization</span><span class="status-badge waiting">—</span></div>
-            <div class="process-step"><span>Tokenizing</span><span class="status-badge waiting">—</span></div>
-            <div class="process-step"><span>Stopword Removal</span><span class="status-badge waiting">—</span></div>
-            <div class="process-step"><span>Stemming</span><span class="status-badge waiting">—</span></div>
-
-            <div class="progress-container">
-              <div class="progress">
-                <div class="progress-bar" id="progressBar"></div>
-              </div>
-              <small class="text-muted d-block mt-2" id="progressText">Menunggu proses dimulai...</small>
+            <div class="progress mt-4" style="height: 12px;">
+              <div class="progress-bar" role="progressbar" id="progressBar" style="width: 0%;"></div>
             </div>
-          </div>
-
-          <!-- CSV Preview -->
-          <div id="csvPreview" class="mt-4" style="display: none;">
-            <h5 class="text-warning">📊 Cuplikan Data CSV:</h5>
-            <div class="table-responsive">
-              <table class="table table-bordered table-sm text-white" id="previewTable">
-                <thead class="table-warning text-dark"></thead>
-                <tbody></tbody>
-              </table>
-            </div>
+            <p id="progressText" class="text-secondary small mt-2">Menyiapkan proses...</p>
           </div>
         </div>
       </div>
@@ -228,11 +209,166 @@
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
+  <script>
+    // Hilangkan "This page says"
+    window.alert = function () { };
+    window.confirm = function () { return true; };
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>AOS.init();</script>
 
+  <script>
+    const form = document.getElementById("uploadForm");
+    const steps = document.querySelectorAll(".process-step .status-badge");
+    const bar = document.getElementById("progressBar");
+    const text = document.getElementById("progressText");
+    const container = document.getElementById("processContainer");
+    const loadingOverlay = document.getElementById("loadingOverlay");
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const fileInput = document.getElementById("csvFile");
+
+      if (!fileInput.files.length) {
+        Swal.fire({
+          icon: "warning",
+          title: "Oops...",
+          text: "Silahkan upload file CSV terlebih dahulu sebelum melanjutkan!",
+          confirmButtonColor: "#ffc107",
+          background: "#1a1a1a",
+          color: "#fff",
+        });
+        return;
+      }
+
+      const fileName = fileInput.files[0].name;
+
+      Swal.fire({
+        title: "Mulai Analisis?",
+        html: `File yang diunggah: <b>${fileName}</b><br><small>Pastikan file berformat .csv</small>`,
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#ffc107",
+        cancelButtonColor: "#6c757d",
+        confirmButtonText: "Ya, Mulai Analisis!",
+        background: "#1a1a1a",
+        color: "#fff",
+      }).then(result => {
+        if (result.isConfirmed) simulateUpload(fileName);
+      });
+    });
+
+    function simulateUpload(fileName) {
+      Swal.fire({
+        title: "Mengunggah Dataset...",
+        html: `Sedang mengunggah <b>${fileName}</b> ke sistem`,
+        allowOutsideClick: false,
+        background: "#1a1a1a",
+        color: "#fff",
+        didOpen: () => Swal.showLoading()
+      });
+
+      setTimeout(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Upload Berhasil!",
+          html: `File <b>${fileName}</b> berhasil diunggah.<br>Sistem akan memulai analisis otomatis.`,
+          showConfirmButton: false,
+          timer: 1800,
+          background: "#1a1a1a",
+          color: "#fff"
+        });
+
+        setTimeout(() => {
+          showLoadingAndStart();
+        }, 1800);
+      }, 1500);
+    }
+
+    function showLoadingAndStart() {
+      loadingOverlay.style.display = "flex";
+
+      setTimeout(() => {
+        loadingOverlay.style.display = "none";
+        container.classList.remove("d-none");
+        container.scrollIntoView({ behavior: "smooth", block: "center" });
+        startAnalysis();
+      }, 1200);
+    }
+
+    function startAnalysis() {
+      const stepsText = [
+        "Case Folding",
+        "Cleansing",
+        "Normalization",
+        "Tokenizing",
+        "Stopword Removal",
+        "Stemming"
+      ];
+
+      text.textContent = "Memulai analisis data...";
+      let current = 0;
+
+      const interval = setInterval(() => {
+        if (current > 0) {
+          steps[current - 1].className = "status-badge done";
+          steps[current - 1].textContent = "Selesai";
+        }
+
+        if (current < steps.length) {
+          steps[current].className = "status-badge processing";
+          steps[current].textContent = "Sedang diproses...";
+          typeText(`Sedang memproses tahap: ${stepsText[current]}...`);
+          bar.style.width = ((current + 1) / steps.length) * 100 + "%";
+          current++;
+        } else {
+          clearInterval(interval);
+
+          steps[steps.length - 1].className = "status-badge done";
+          steps[steps.length - 1].textContent = "Selesai";
+
+          bar.style.width = "100%";
+          bar.classList.add("bg-success");
+          text.classList.remove("text-secondary");
+          text.classList.add("text-success");
+          typeText("✅ Analisis selesai! Semua tahap berhasil diproses.");
+
+          Swal.fire({
+            icon: "success",
+            title: "Analisis Selesai!",
+            text: "Data berhasil diproses. Mengalihkan ke halaman hasil...",
+            showConfirmButton: false,
+            timer: 2200,
+            background: "#1a1a1a",
+            color: "#fff"
+          });
+
+          setTimeout(() => {
+            window.location.href = "hasil_ulasan.html";
+          }, 2200);
+        }
+      }, 1600);
+    }
+
+    function typeText(sentence) {
+      text.textContent = "";
+      let i = 0;
+      const speed = 35;
+
+      const typer = setInterval(() => {
+        if (i < sentence.length) {
+          text.textContent += sentence.charAt(i);
+          i++;
+        } else {
+          clearInterval(typer);
+        }
+      }, speed);
+    }
+  </script>
 </body>
 </html>

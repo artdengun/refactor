@@ -25,7 +25,15 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
+    canvas {
+      background-color: #111; /* biar chart gak nempel langsung ke hitam pekat */
+      border-radius: 10px;
+      padding: 10px;
+    }
+
     .app-card:hover {
       transform: translateY(-5px);
       transition: 0.3s ease;
@@ -56,6 +64,24 @@
       background: #fff;
       padding: 3px;
     }
+
+    canvas {
+      background-color: #111;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 193, 7, 0.1);
+      padding: 10px;
+    }
+
+    .section h3 i {
+      margin-right: 6px;
+    }
+
+    .section h3 {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+
   </style>
 
 
@@ -142,19 +168,21 @@
                 </section>
 
                 <!-- ======= Tambahan: Chart Ringkasan ======= -->
-                <section class="section bg-black text-light py-5" id="chart-summary">
-                  <div class="container" data-aos="fade-up">
-                    <h3 class="text-warning text-center mb-4"><i class="bi bi-bar-chart"></i> Visualisasi Ringkasan Analisis</h3>
-                    <div class="row justify-content-center">
-                      <div class="col-md-6 mb-4">
-                        <canvas id="sentimentChart"></canvas>
-                      </div>
-                      <div class="col-md-6 mb-4">
-                        <canvas id="emotionChart"></canvas>
-                      </div>
+              <section class="section bg-black text-light py-5" id="chart-summary">
+                <div class="container" data-aos="fade-up">
+                  <h3 class="text-warning text-center mb-4">
+                    <i class="bi bi-bar-chart"></i> Visualisasi Ringkasan Analisis
+                  </h3>
+                  <div class="row justify-content-center">
+                    <div class="col-md-6 mb-4" data-aos="zoom-in">
+                      <canvas id="sentimentChart"></canvas>
+                    </div>
+                    <div class="col-md-6 mb-4" data-aos="zoom-in">
+                      <canvas id="emotionChart"></canvas>
                     </div>
                   </div>
-                </section>
+                </div>
+              </section>
 
                 <!-- ======= Tambahan: Informasi Dataset ======= -->
                 <section class="section bg-dark text-light py-5" id="dataset-info">
@@ -429,38 +457,70 @@
                 <p class="small text-muted">Berdasarkan hasil analisis keaslian ulasan pengguna</p>
                 <ul class="list-unstyled mt-3">
                   <li class="d-flex justify-content-between align-items-center border-bottom py-2">
-                    <span><img src="assets/akulaku.png" width="20" class="me-2"> Akulaku</span>
+                    <span>
+                      <img src="assets/akulaku.png" width="20" class="me-2">
+                      <a href="akulaku.html" target="_blank" class="text-decoration-none text-white">Akulaku</a>
+                    </span>
                     <strong>92%</strong>
                   </li>
+
                   <li class="d-flex justify-content-between align-items-center border-bottom py-2">
-                    <span><img src="assets/adakami.jpeg" width="20" class="me-2"> Adakami</span>
+                    <span>
+                      <img src="assets/adakami.jpeg" width="20" class="me-2">
+                      <a href="adakami.html" target="_blank" class="text-decoration-none text-white">Adakami</a>
+                    </span>
                     <strong>94%</strong>
                   </li>
+
                   <li class="d-flex justify-content-between align-items-center border-bottom py-2">
-                    <span><img src="assets/easycash.png" width="20" class="me-2"> EasyCash</span>
+                    <span>
+                      <img src="assets/easycash.png" width="20" class="me-2">
+                      <a href="easycash.html" target="_blank" class="text-decoration-none text-white">EasyCash</a>
+                    </span>
                     <strong>93%</strong>
                   </li>
+
                   <li class="d-flex justify-content-between align-items-center border-bottom py-2">
-                    <span><img src="assets/winwin.jpg" width="20" class="me-2"> Pinjam Winwin</span>
+                    <span>
+                      <img src="assets/winwin.jpg" width="20" class="me-2">
+                      <a href="pinjamwinwin.html" target="_blank" class="text-decoration-none text-white">Pinjam Winwin</a>
+                    </span>
                     <strong>90%</strong>
                   </li>
+
                   <li class="d-flex justify-content-between align-items-center border-bottom py-2">
-                    <span><img src="assets/tunaiku.jfif" width="20" class="me-2">Tunaiku</span>
+                    <span>
+                      <img src="assets/tunaiku.jfif" width="20" class="me-2">
+                      <a href="tunaiku.html" target="_blank" class="text-decoration-none text-white">Tunaiku</a>
+                    </span>
                     <strong>89%</strong>
                   </li>
+
                   <li class="d-flex justify-content-between align-items-center border-bottom py-2">
-                    <span><img src="assets/pinjamgo.png" width="20" class="me-2"> Pinjam GO</span>
+                    <span>
+                      <img src="assets/pinjamgo.png" width="20" class="me-2">
+                      <a href="pinjamgo.html" target="_blank" class="text-decoration-none text-white">Pinjam GO</a>
+                    </span>
                     <strong>87%</strong>
                   </li>
+
                   <li class="d-flex justify-content-between align-items-center border-bottom py-2">
-                    <span><img src="assets/indodana.jpg" width="20" class="me-2"> Indodana</span>
+                    <span>
+                      <img src="assets/indodana.jpg" width="20" class="me-2">
+                      <a href="indodana.html" target="_blank" class="text-decoration-none text-white">Indodana</a>
+                    </span>
                     <strong>85%</strong>
                   </li>
+
                   <li class="d-flex justify-content-between align-items-center border-bottom py-2">
-                    <span><img src="assets/kreditpintar.jfif" width="20" class="me-2"> Kredit Pintar</span>
+                    <span>
+                      <img src="assets/kreditpintar.jfif" width="20" class="me-2">
+                      <a href="kreditpintar.html" target="_blank" class="text-decoration-none text-white">Kredit Pintar</a>
+                    </span>
                     <strong>80%</strong>
                   </li>
                 </ul>
+
               </div>
 
             </div>
@@ -481,43 +541,105 @@
 
   <!-- Preloader -->
   <div id="preloader"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Script -->
+  <script>
+    // Inisialisasi AOS animation
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
 
-  <!-- Script -->
-<script>
-  // Sentiment chart
-  const ctx1 = document.getElementById('sentimentChart');
-  new Chart(ctx1, {
-    type: 'doughnut',
-    data: {
-      labels: ['Positif', 'Netral', 'Negatif'],
-      datasets: [{
-        data: [63, 13, 24],
-        backgroundColor: ['#ffc107', '#6c757d', '#dc3545']
-      }]
-    },
-    options: {
-      plugins: { legend: { position: 'bottom' } }
-    }
-  });
+    // Tunggu sampai dokumen siap
+    document.addEventListener("DOMContentLoaded", function () {
 
-  // Emotion chart
-  const ctx2 = document.getElementById('emotionChart');
-  new Chart(ctx2, {
-    type: 'bar',
-    data: {
-      labels: ['Bahagia', 'Cemas', 'Marah', 'Lega', 'Puas', 'Kecewa', 'Tenang'],
-      datasets: [{
-        label: 'Frekuensi Emosi Dominan',
-        data: [28, 14, 11, 9, 7, 6, 5],
-        backgroundColor: '#ffc107'
-      }]
-    },
-    options: {
-      scales: { y: { beginAtZero: true } },
-      plugins: { legend: { display: false } }
-    }
-  });
-</script>
+      // ===== Sentiment Chart =====
+      const ctx1 = document.getElementById('sentimentChart');
+      new Chart(ctx1, {
+        type: 'doughnut',
+        data: {
+          labels: ['Positif', 'Netral', 'Negatif'],
+          datasets: [{
+            data: [63, 13, 24],
+            backgroundColor: ['#ffc107', '#6c757d', '#dc3545'],
+            borderColor: '#000',
+            borderWidth: 2,
+            hoverBackgroundColor: ['#ffca2c', '#868e96', '#e35d6a'],
+            hoverOffset: 8
+          }]
+        },
+        options: {
+          animation: {
+            duration: 1200,
+            easing: 'easeOutQuart'
+          },
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: '#fff',
+                font: { size: 14 }
+              }
+            }
+          }
+        }
+      });
+
+      // ===== Emotion Chart =====
+     // Emotion Chart (warna lebih variatif)
+      const ctx2 = document.getElementById('emotionChart');
+      new Chart(ctx2, {
+        type: 'bar',
+        data: {
+          labels: ['Bahagia', 'Cemas', 'Marah', 'Lega', 'Puas', 'Kecewa', 'Tenang'],
+          datasets: [{
+            label: 'Frekuensi Emosi Dominan',
+            data: [28, 14, 11, 9, 7, 6, 5],
+            backgroundColor: [
+              '#ffc107', // Bahagia - Kuning
+              '#17a2b8', // Cemas - Biru muda
+              '#dc3545', // Marah - Merah
+              '#28a745', // Lega - Hijau
+              '#fd7e14', // Puas - Oranye
+              '#6f42c1', // Kecewa - Ungu
+              '#20c997'  // Tenang - Teal
+            ],
+            hoverBackgroundColor: [
+              '#ffca2c', '#31d2f2', '#e35d6a', '#4ade80',
+              '#ff9f43', '#9b6ee8', '#40e0d0'
+            ],
+            borderRadius: 6
+          }]
+        },
+        options: {
+          animation: { duration: 1200, easing: 'easeOutQuart' },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { color: '#fff' },
+              grid: { color: 'rgba(255,255,255,0.1)' }
+            },
+            x: {
+              ticks: { color: '#fff' },
+              grid: { color: 'rgba(255,255,255,0.1)' }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#222',
+              titleColor: '#ffc107',
+              bodyColor: '#fff'
+            }
+          },
+          interaction: { mode: 'index', intersect: false }
+        }
+      });
+
+    });
+  </script>
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
