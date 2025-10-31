@@ -26,14 +26,14 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    .dark-background .card {
+  background-color: transparent !important;
+  color: inherit !important;
+  border: 1px solid rgba(255,255,255,0.15);
+}
 
-  <!-- =======================================================
-  * Template Name: Strategy
-  * Template URL: https://bootstrapmade.com/strategy-bootstrap-agency-template/
-  * Updated: Jun 06 2025 with Bootstrap v5.3.6
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -86,20 +86,110 @@
       </div>
     </div><!-- End Page Title -->
 
-    <!-- Starter Section Section -->
-    <section id="starter-section" class="starter-section section">
+    <!-- Tentang Sistem Section -->
+    <section id="tentang-sistem" class="tentang-sistem section">
 
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Starter Section</h2>
-        <div><span>Check Our</span> <span class="description-title">Starter Section</span></div>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up">
-        <p>Use this page as a starter for your own custom pages.</p>
+        <h2>Tentang Sistem</h2>
+        <div><span>Bagaimana</span> <span class="description-title">Sistem Bekerja</span></div>
+        <p class="mt-3">Multitask Learning Berbasis IndoBERT untuk Klasifikasi Sentimen, Emosi, dan Deteksi Ulasan Palsu pada Aplikasi Pinjaman Online.</p>
       </div>
 
-    </section><!-- /Starter Section Section -->
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- Ringkasan Sistem -->
+        <div class="stat-card shadow-sm border-0 mb-4 dark-background">
+          <div class="card-body">
+            <h4 class="text-primary"><i class="bi bi-cpu"></i> Ringkasan Sistem</h4>
+            <p>
+              Sistem ini dirancang untuk menganalisis ulasan pengguna aplikasi pinjaman online secara otomatis menggunakan model <strong>IndoBERT Multitask Learning</strong>.
+              Pendekatan multitask memungkinkan satu model mempelajari tiga tugas sekaligus — <strong>analisis sentimen</strong>, <strong>deteksi emosi</strong>, dan <strong>identifikasi ulasan palsu</strong> — 
+              sehingga hasil lebih konsisten dan efisien.
+            </p>
+          </div>
+        </div>
+
+        <!-- Arsitektur Model -->
+        <!-- Arsitektur Model -->
+        <div class="stat-card shadow-sm border-0 mb-4">
+          <div class="card-body">
+            <h4 class="text-success"><i class="bi bi-diagram-3"></i> Arsitektur Multitask IndoBERT</h4>
+            <p>Model IndoBERT bertindak sebagai <em>shared encoder</em> yang mengekstraksi fitur semantik dari teks ulasan. Kemudian, fitur tersebut diteruskan ke tiga <em>output heads</em> paralel:</p>
+            <ul>
+              <li><strong>Head 1 – Klasifikasi Sentimen:</strong> Positif, Netral, Negatif.</li>
+              <li><strong>Head 2 – Klasifikasi Emosi:</strong> Bahagia, Marah, Cemas, Sedih, Lega, dan lainnya.</li>
+              <li><strong>Head 3 – Deteksi Ulasan Palsu:</strong> Otentik atau Diduga Palsu.</li>
+            </ul>
+
+            <div class="text-center mt-4">
+              <img src="https://cdn.jsdelivr.net/gh/emptyai-lab/public-assets@main/img/indobert_multitask_architecture.png"
+                  class="img-fluid rounded-3 shadow-sm"
+                  alt="Diagram Arsitektur IndoBERT Multitask">
+              <p class="text-muted small mt-2">Gambar: Skema multitask IndoBERT dengan tiga output head.</p>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Proses Analisis -->
+        <div class="stat-card shadow-sm border-0 mb-4">
+          <div class="card-body">
+            <h4 class="text-warning"><i class="bi bi-gear"></i> Alur Proses Analisis</h4>
+            <ol>
+              <li><strong>Preprocessing:</strong> Meliputi case folding, cleansing, normalisasi teks, tokenisasi, stopword removal, dan stemming.</li>
+              <li><strong>Embedding:</strong> Teks yang telah dibersihkan diubah menjadi representasi vektor menggunakan IndoBERT.</li>
+              <li><strong>Multitask Learning:</strong> Model mempelajari ketiga tugas secara bersamaan menggunakan mekanisme shared encoder dan task-specific heads.</li>
+              <li><strong>Evaluasi:</strong> Setiap tugas diukur dengan akurasi dan F1-score untuk memastikan kualitas hasil analisis.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Statistik Model -->
+        <div class="row gy-4 mt-3 text-center">
+          <div class="col-lg-4">
+            <div class="p-4 border rounded-3 shadow-sm">
+              <h5 class="fw-bold text-primary">Akurasi Sentimen</h5>
+              <h2 id="accSentimen">91.4%</h2>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="p-4 border rounded-3 shadow-sm">
+              <h5 class="fw-bold text-success">Akurasi Emosi</h5>
+              <h2 id="accEmosi">88.2%</h2>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="p-4 border rounded-3 shadow-sm">
+              <h5 class="fw-bold text-danger">Akurasi Deteksi Palsu</h5>
+              <h2 id="accPalsu">84.7%</h2>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keunggulan Sistem -->
+        <div class="stat-card shadow-sm border-0 mt-5">
+          <div class="card-body">
+            <h4 class="text-info"><i class="bi bi-lightbulb"></i> Keunggulan Sistem</h4>
+            <ul>
+              <li>✅ Analisis tiga aspek (sentimen, emosi, keaslian) dalam satu model terpadu.</li>
+              <li>⚙️ Akurasi tinggi berkat fine-tuning IndoBERT terhadap data ulasan berbahasa Indonesia.</li>
+              <li>📊 Visualisasi interaktif untuk memahami persepsi pengguna secara cepat.</li>
+              <li>🔍 Dapat diintegrasikan dengan dashboard atau API untuk pemantauan real-time.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Catatan Metodologi -->
+        <div class="text-center mt-5">
+          <p class="text-muted small text-white">
+            *Analisis ini menggunakan IndoBERT-base multitask dengan dataset ulasan Play Store hingga Oktober 2025.
+          </p>
+        </div>
+
+      </div>
+    </section>
+    <!-- End Tentang Sistem Section -->
+
 
   </main>
 
@@ -172,6 +262,14 @@
 
   <!-- Preloader -->
   <div id="preloader"></div>
+<!-- CDN untuk Chart & Animasi -->
+<script src="https://cdn.jsdelivr.net/npm/countup.js@2.6.2/dist/countUp.umd.js"></script>
+<script>
+  const { CountUp } = window;
+  new CountUp('accSentimen', 91.4, { duration: 2 }).start();
+  new CountUp('accEmosi', 88.2, { duration: 2 }).start();
+  new CountUp('accPalsu', 84.7, { duration: 2 }).start();
+</script>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

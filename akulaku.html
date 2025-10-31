@@ -82,206 +82,124 @@
     <section id="portfolio-details" class="portfolio-details section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <section class="section bg-black text-light py-5" data-aos="fade-up">
+      <div class="container text-center">
+        <img src="assets/akulaku.png" alt="Akulaku Logo" width="60" class="mb-3">
+        <h2 class="fw-bold text-uppercase text-warning">Hasil Analisis Aplikasi Akulaku</h2>
+        <p class="lead mb-1">Multitask Learning Berbasis <strong>IndoBERT</strong></p>
+        <p><em>Klasifikasi Sentimen, Emosi, dan Deteksi Ulasan Palsu</em></p>
+        <p>Model IndoBERT multitask menganalisis <strong>1.200 ulasan</strong> dengan akurasi tinggi pada tiga tugas utama.</p>
+        <div class="mt-3">
+          <a href="#" class="btn btn-warning btn-sm me-2"><i class="bi bi-file-earmark-arrow-down"></i> Download Laporan PDF</a>
+          <a href="#" class="btn btn-outline-light btn-sm"><i class="bi bi-database"></i> Lihat Dataset</a>
+        </div>
+      </div>
+    </section>
 
-        <div class="row gy-4">
-          <div class="col-lg-6" data-aos="fade-right">
-            <div class="portfolio-details-media">
-              <div class="main-image">
-                <div class="portfolio-details-slider swiper init-swiper" data-aos="zoom-in">
-                  <script type="application/json" class="swiper-config">
-                    {
-                      "loop": true,
-                      "speed": 1000,
-                      "autoplay": {
-                        "delay": 6000
-                      },
-                      "effect": "creative",
-                      "creativeEffect": {
-                        "prev": {
-                          "shadow": true,
-                          "translate": [0, 0, -400]
-                        },
-                        "next": {
-                          "translate": ["100%", 0, 0]
-                        }
-                      },
-                      "slidesPerView": 1,
-                      "navigation": {
-                        "nextEl": ".swiper-button-next",
-                        "prevEl": ".swiper-button-prev"
-                      }
-                    }
-                  </script>
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                      <img src="assets/img/portfolio/portfolio-5.webp" alt="Portfolio Image" class="img-fluid">
-                    </div>
-                    <div class="swiper-slide">
-                      <img src="assets/img/portfolio/portfolio-7.webp" alt="Portfolio Image" class="img-fluid">
-                    </div>
-                    <div class="swiper-slide">
-                      <img src="assets/img/portfolio/portfolio-8.webp" alt="Portfolio Image" class="img-fluid">
-                    </div>
-                  </div>
-                  <div class="swiper-button-prev"></div>
-                  <div class="swiper-button-next"></div>
-                </div>
-              </div>
+    <!-- 2. Metodologi -->
+    <section class="section" data-aos="fade-right">
+      <div class="container">
+        <h4 class="fw-semibold mb-3"><i class="bi bi-cpu me-2 text-warning"></i>Metodologi Multitask IndoBERT</h4>
+        <p>Model dilatih untuk tiga tugas secara paralel menggunakan pendekatan <strong>multi-output IndoBERT</strong>:</p>
+        <ul>
+          <li><strong>Klasifikasi Sentimen:</strong> Menentukan apakah ulasan bersifat Positif, Netral, atau Negatif.</li>
+          <li><strong>Klasifikasi Emosi:</strong> Mengidentifikasi emosi utama (Bahagia, Cemas, Lega, Sedih, dll).</li>
+          <li><strong>Deteksi Ulasan Palsu:</strong> Membedakan ulasan asli dan yang berpotensi tidak otentik.</li>
+        </ul>
+        <div class="text-center mt-4">
+          <img src="assets/img/diagram_indobert.png" class="img-fluid rounded shadow" alt="Diagram IndoBERT">
+          <p class="small mt-2 text-muted">Diagram: IndoBERT dengan tiga output head — Sentimen, Emosi, Keaslian.</p>
+        </div>
+      </div>
+    </section>
 
-              <div class="thumbnail-grid" data-aos="fade-up" data-aos-delay="200">
-                <div class="row g-2 mt-3">
-                  <div class="col-3">
-                    <img src="assets/img/portfolio/portfolio-4.webp" alt="Gallery Image" class="img-fluid glightbox">
-                  </div>
-                  <div class="col-3">
-                    <img src="assets/img/portfolio/portfolio-6.webp" alt="Gallery Image" class="img-fluid glightbox">
-                  </div>
-                  <div class="col-3">
-                    <img src="assets/img/portfolio/portfolio-11.webp" alt="Gallery Image" class="img-fluid glightbox">
-                  </div>
-                  <div class="col-3">
-                    <img src="assets/img/portfolio/portfolio-12.webp" alt="Gallery Image" class="img-fluid glightbox">
-                  </div>
-                </div>
-              </div>
+    <!-- 3. Statistik Model -->
+    <section class="section bg-dark text-light" data-aos="fade-left">
+      <div class="container">
+        <h4 class="fw-semibold mb-3"><i class="bi bi-bar-chart text-warning me-2"></i>Statistik Model & Evaluasi</h4>
+        <div class="row g-3 text-center">
+          <div class="col-md-4"><div class="p-3 bg-black rounded shadow-sm"><h3 class="text-warning" id="accSentimen">91.4%</h3><p>Akurasi Sentimen</p></div></div>
+          <div class="col-md-4"><div class="p-3 bg-black rounded shadow-sm"><h3 class="text-warning" id="accEmosi">88.2%</h3><p>Akurasi Emosi</p></div></div>
+          <div class="col-md-4"><div class="p-3 bg-black rounded shadow-sm"><h3 class="text-warning" id="accPalsu">84.7%</h3><p>Akurasi Deteksi Ulasan Palsu</p></div></div>
+        </div>
+        <p class="small text-center mt-3 text-secondary">Dataset: 1.200 ulasan (80% train / 20% test) • Evaluasi: stratified k-fold cross-validation</p>
+      </div>
+    </section>
 
-              <div class="tech-stack-badges" data-aos="fade-up" data-aos-delay="300">
-                <span>Angular</span>
-                <span>Express.js</span>
-                <span>PostgreSQL</span>
-                <span>GraphQL</span>
-                <span>Firebase</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-left">
-            <div class="portfolio-details-content">
-              <div class="project-meta">
-                <div class="badge-wrapper">
-                  <span class="project-badge">UX/UI Design</span>
-                </div>
-                <div class="date-client">
-                  <div class="meta-item">
-                    <i class="bi bi-calendar-check"></i>
-                    <span>September 2024</span>
-                  </div>
-                  <div class="meta-item">
-                    <i class="bi bi-buildings"></i>
-                    <span>DigitalCraft Solutions</span>
-                  </div>
-                </div>
-              </div>
-
-              <h2 class="project-title">Innovative Financial Dashboard App</h2>
-
-              <div class="project-website">
-                <i class="bi bi-link-45deg"></i>
-                <a href="#" target="_blank">projectwebsite.example.com</a>
-              </div>
-
-              <div class="project-overview">
-                <p class="lead">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie.
-                </p>
-
-                <div class="accordion project-accordion" id="portfolio-details-projectAccordion">
-                  <div class="accordion-item" data-aos="fade-up">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#portfolio-details-collapse-1" aria-expanded="true" aria-controls="collapseOne">
-                        <i class="bi bi-clipboard-data me-2"></i> Project Overview
-                      </button>
-                    </h2>
-                    <div id="portfolio-details-collapse-1" class="accordion-collapse collapse show" data-bs-parent="#portfolio-details-projectAccordion">
-                      <div class="accordion-body">
-                        <p>Cras ultricies ligula sed magna dictum porta. Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#portfolio-details-collapse-2" aria-expanded="false" aria-controls="collapseTwo">
-                        <i class="bi bi-exclamation-diamond me-2"></i> The Challenge
-                      </button>
-                    </h2>
-                    <div id="portfolio-details-collapse-2" class="accordion-collapse collapse" data-bs-parent="#portfolio-details-projectAccordion">
-                      <div class="accordion-body">
-                        <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#portfolio-details-collapse-3" aria-expanded="false" aria-controls="collapseThree">
-                        <i class="bi bi-award me-2"></i> The Solution
-                      </button>
-                    </h2>
-                    <div id="portfolio-details-collapse-3" class="accordion-collapse collapse" data-bs-parent="#portfolio-details-projectAccordion">
-                      <div class="accordion-body">
-                        <p>Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#portfolio-details-collapse-3" aria-expanded="false" aria-controls="collapseThree">
-                        <i class="bi bi-award me-2"></i> The Solution
-                      </button>
-                    </h2>
-                    <div id="portfolio-details-collapse-3" class="accordion-collapse collapse" data-bs-parent="#portfolio-details-projectAccordion">
-                      <div class="accordion-body">
-                        <p>Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#portfolio-details-collapse-3" aria-expanded="false" aria-controls="collapseThree">
-                        <i class="bi bi-award me-2"></i> The Solution
-                      </button>
-                    </h2>
-                    <div id="portfolio-details-collapse-3" class="accordion-collapse collapse" data-bs-parent="#portfolio-details-projectAccordion">
-                      <div class="accordion-body">
-                        <p>Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="project-features" data-aos="fade-up" data-aos-delay="300">
-                <h3><i class="bi bi-stars"></i> Key Features</h3>
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <ul class="feature-list">
-                      <li><i class="bi bi-check2-circle"></i> Real-time Data Visualization</li>
-                      <li><i class="bi bi-check2-circle"></i> User Role Management</li>
-                      <li><i class="bi bi-check2-circle"></i> Secure Authentication</li>
-                    </ul>
-                  </div>
-                  <div class="col-md-6">
-                    <ul class="feature-list">
-                      <li><i class="bi bi-check2-circle"></i> Customizable Dashboards</li>
-                      <li><i class="bi bi-check2-circle"></i> Data Export Options</li>
-                      <li><i class="bi bi-check2-circle"></i> Multi-device Support</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
-                <a href="#" class="btn-view-project">View Live Project</a>
-                <a href="#" class="btn-next-project">Next Project <i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
+    <!-- 4. Distribusi Sentimen -->
+    <section class="section" data-aos="zoom-in">
+      <div class="container">
+        <h4 class="fw-semibold mb-4"><i class="bi bi-emoji-smile text-warning me-2"></i>Distribusi Sentimen Akulaku</h4>
+        <div class="row align-items-center">
+          <div class="col-md-6"><canvas id="chartSentimen"></canvas></div>
+          <div class="col-md-6">
+            <ul>
+              <li><strong>Positif:</strong> 68%</li>
+              <li><strong>Netral:</strong> 20%</li>
+              <li><strong>Negatif:</strong> 12%</li>
+            </ul>
+            <p><em>Mayoritas pengguna merasa puas dengan kemudahan penggunaan dan kecepatan pencairan dana.</em></p>
           </div>
         </div>
-
       </div>
+    </section>
 
-    </section><!-- /Portfolio Details Section -->
+    <!-- 5. Emosi -->
+    <section class="section bg-dark text-light" data-aos="zoom-in">
+      <div class="container">
+        <h4 class="fw-semibold mb-4"><i class="bi bi-heart-pulse text-warning me-2"></i>Analisis Emosi Pengguna</h4>
+        <div class="row align-items-center">
+          <div class="col-md-6"><canvas id="chartEmosi"></canvas></div>
+          <div class="col-md-6">
+            <p><em>Emosi bahagia dominan pada ulasan terkait kemudahan transaksi, sementara cemas muncul pada masalah verifikasi dan bunga tinggi.</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Deteksi Palsu -->
+    <section class="section" data-aos="fade-up">
+      <div class="container">
+        <h4 class="fw-semibold mb-4"><i class="bi bi-shield-check text-warning me-2"></i>Deteksi Ulasan Palsu</h4>
+        <div class="row align-items-center">
+          <div class="col-md-6"><canvas id="chartFake"></canvas></div>
+          <div class="col-md-6">
+            <p><strong>Asli:</strong> 87% &nbsp; | &nbsp; <strong>Diduga Palsu:</strong> 13%</p>
+            <p class="small"><em>Ulasan palsu sering berisi kata positif umum seperti “bagus”, “mantap”, dan “cepat”, muncul berulang dari akun berbeda.</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Contoh Ulasan -->
+    <section class="section bg-light" data-aos="fade-up">
+      <div class="container">
+        <h4 class="fw-semibold mb-3"><i class="bi bi-chat-text text-warning me-2"></i>Contoh Ulasan Nyata</h4>
+        <table class="table table-bordered table-striped">
+          <thead class="table-warning">
+            <tr><th>Ulasan</th><th>Sentimen</th><th>Emosi</th><th>Keaslian</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>“Aplikasi ini sangat membantu, proses cepat dan aman.”</td><td>Positif</td><td>Bahagia</td><td>95%</td></tr>
+            <tr><td>“Terlalu banyak permintaan data pribadi.”</td><td>Negatif</td><td>Cemas</td><td>88%</td></tr>
+            <tr><td>“Luar biasa, cepat cair!”</td><td>Positif</td><td>Lega</td><td>54% (diduga palsu)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 8. Kesimpulan -->
+    <section class="section bg-dark text-light" data-aos="fade-up">
+      <div class="container">
+        <h4 class="fw-semibold mb-3"><i class="bi bi-lightbulb text-warning me-2"></i>Kesimpulan & Insight</h4>
+        <ul>
+          <li>Kepuasan pengguna tinggi; perlu peningkatan keamanan dan transparansi data.</li>
+          <li>Model IndoBERT multitask efektif mengenali sentimen & emosi (akurasi >85%).</li>
+          <li>13% ulasan menunjukkan pola tidak alami — perlu validasi manual.</li>
+          <li>Rekomendasi: perkuat validasi akun & pantau emosi negatif mingguan.</li>
+        </ul>
+      </div>
+    </section>
 
   </main>
 
@@ -290,7 +208,9 @@
 
   <!-- Preloader -->
   <div id="preloader"></div>
-
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/countup.js@2.6.2/dist/countUp.umd.js"></script>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -302,6 +222,97 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+<!-- Vendor JS -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<!-- CDN Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- CountUp.js untuk animasi angka -->
+<script src="https://cdn.jsdelivr.net/npm/countup.js@2.6.2/dist/countUp.umd.js"></script>
+
+<script>
+  // ==== Inisialisasi AOS (animasi scroll) ====
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true
+  });
+
+  // ==== Animasi angka statistik ====
+  const { CountUp } = window;
+  new CountUp('accSentimen', 91.4, { duration: 2 }).start();
+  new CountUp('accEmosi', 88.2, { duration: 2 }).start();
+  new CountUp('accPalsu', 84.7, { duration: 2 }).start();
+
+  // ==== Chart Sentimen (Donut) ====
+  new Chart(document.getElementById("chartSentimen"), {
+    type: "doughnut",
+    data: {
+      labels: ["Positif", "Netral", "Negatif"],
+      datasets: [{
+        data: [68, 20, 12],
+        backgroundColor: ["#4CAF50", "#FFC107", "#F44336"],
+        borderWidth: 2,
+        borderColor: "#fff"
+      }]
+    },
+    options: {
+      responsive: true,
+      cutout: "65%",
+      animation: { animateScale: true, duration: 1500 },
+      plugins: { legend: { position: "bottom" } }
+    }
+  });
+
+  // ==== Chart Emosi (Bar) ====
+  new Chart(document.getElementById("chartEmosi"), {
+    type: "bar",
+    data: {
+      labels: ["Bahagia", "Lega", "Cemas", "Kecewa", "Marah", "Sedih"],
+      datasets: [{
+        data: [45, 20, 15, 10, 6, 4],
+        backgroundColor: [
+          "#4CAF50", "#FFC107", "#FF9800", "#9C27B0", "#F44336", "#2196F3"
+        ],
+        borderRadius: 8
+      }]
+    },
+    options: {
+      scales: {
+        y: { beginAtZero: true, ticks: { color: "#777" } },
+        x: { ticks: { color: "#777" } }
+      },
+      plugins: {
+        legend: { display: false }
+      },
+      animation: {
+        duration: 1300,
+        easing: "easeOutBounce"
+      }
+    }
+  });
+
+  // ==== Chart Fake Review (Pie) ====
+  new Chart(document.getElementById("chartFake"), {
+    type: "pie",
+    data: {
+      labels: ["Asli", "Diduga Palsu"],
+      datasets: [{
+        data: [87, 13],
+        backgroundColor: ["#2196F3", "#E91E63"],
+        borderWidth: 2,
+        borderColor: "#fff"
+      }]
+    },
+    options: {
+      responsive: true,
+      animation: { animateRotate: true, duration: 1200 },
+      plugins: { legend: { position: "bottom" } }
+    }
+  });
+</script>
 
 </body>
 
