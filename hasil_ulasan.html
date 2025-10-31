@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Smart Review Analyzer (SRA)</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <style>
+    .app-card:hover {
+      transform: translateY(-5px);
+      transition: 0.3s ease;
+      box-shadow: 0 8px 20px rgba(255, 193, 7, 0.25);
+    }
+
+    .card-img-top {
+      height: 120px;
+      object-fit: contain;
+      padding: 10px;
+    }
+
+    .trusted-rating {
+      background-color: #101820;
+      border-radius: 12px;
+      padding: 20px;
+      color: #f5f5f5;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .trusted-rating ul li strong {
+      color: #ffc107;
+      /* warna kuning emas */
+    }
+
+    .trusted-rating img {
+      border-radius: 50%;
+      background: #fff;
+      padding: 3px;
+    }
+  </style>
+
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="service-details-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">SMART REVIEW ANALYZER</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html"  class="active">Beranda</a></li>
+          <li><a href="product_list.html">Analisis Ulasan</a></li>
+          <li><a href="hasil_ulasan.html">Hasil & Rating</a></li>
+          <li class="dropdown">
+          <a href="grafik_statistik.html"><span>Grafik & Statistik</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a href="akulaku.html">Aku Laku</a></li>
+            <li><a href="adakami.html">Adakami</a></li>
+            <li><a href="easycash.html">Easycash</a></li>
+            <li><a href="pinjamwinwin.html">Pinjam Winwin</a></li>
+            <li><a href="tunaiku.html">Tunaiku</a></li>
+            <li><a href="pinjamgo.html">Pinjam GO</a></li>
+            <li><a href="indodana.html">Indodana</a></li>
+            <li><a href="kreditpintar.html">Kredit Pintar</a></li>
+          </ul>
+        </li>
+          <li><a href="tentang_sistem.html">Tentang Sistem</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="#analyze">Mulai Analisis</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="page-title dark-background" data-aos="fade">
+      <div class="container position-relative">
+        <h2>Mulai Analisis Ulasan Pengguna</h2>
+        <p>
+          Anda dapat <strong>mengunggah dataset ulasan baru</strong> dalam format <code>.csv</code> untuk dilakukan
+          analisis
+          otomatis menggunakan model <strong>IndoBERT Multitask Learning</strong>, atau
+          <strong>melihat hasil analisis dan rating aplikasi</strong> yang telah tersedia sebelumnya.
+          Sistem akan menampilkan hasil prediksi <em>sentimen</em>, <em>emosi</em>, serta <em>tingkat keaslian
+            ulasan</em>
+          secara interaktif.
+        </p>
+      </div>
+    </div><!-- End Page Title -->
+
+    <section id="service-details" class="service-details section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-8 order-lg-1 order-2">
+            <div class="service-main-content">
+              <hr><!-- ======= Tambahan: Tahapan Analisis IndoBERT ======= -->
+                <section class="section bg-dark text-light py-5" id="analysis-steps">
+                  <div class="container" data-aos="fade-up">
+                    <h3 class="text-warning text-center mb-4">
+                      <i class="bi bi-cpu"></i> Tahapan Analisis Menggunakan Model IndoBERT Multitask Learning
+                    </h3>
+                    <p class="text-center mb-5">Berikut urutan proses yang dilakukan sistem sebelum menghasilkan prediksi sentimen, emosi, dan tingkat keaslian ulasan.</p>
+
+                    <div class="row text-center g-4">
+                      <div class="col-md-2"><div class="p-3 border rounded-3 bg-secondary"><strong>1️⃣ Case Folding</strong><p class="small mb-0">Mengubah semua huruf menjadi huruf kecil.</p></div></div>
+                      <div class="col-md-2"><div class="p-3 border rounded-3 bg-secondary"><strong>2️⃣ Cleansing</strong><p class="small mb-0">Menghapus simbol, angka, dan karakter tak relevan.</p></div></div>
+                      <div class="col-md-2"><div class="p-3 border rounded-3 bg-secondary"><strong>3️⃣ Normalization</strong><p class="small mb-0">Menormalkan kata tidak baku ke bentuk baku.</p></div></div>
+                      <div class="col-md-2"><div class="p-3 border rounded-3 bg-secondary"><strong>4️⃣ Tokenizing</strong><p class="small mb-0">Memecah kalimat menjadi kata-kata (token).</p></div></div>
+                      <div class="col-md-2"><div class="p-3 border rounded-3 bg-secondary"><strong>5️⃣ Stopword Removal</strong><p class="small mb-0">Menghapus kata umum tanpa makna penting.</p></div></div>
+                      <div class="col-md-2"><div class="p-3 border rounded-3 bg-secondary"><strong>6️⃣ Stemming</strong><p class="small mb-0">Mengembalikan kata ke bentuk dasarnya.</p></div></div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- ======= Tambahan: Chart Ringkasan ======= -->
+                <section class="section bg-black text-light py-5" id="chart-summary">
+                  <div class="container" data-aos="fade-up">
+                    <h3 class="text-warning text-center mb-4"><i class="bi bi-bar-chart"></i> Visualisasi Ringkasan Analisis</h3>
+                    <div class="row justify-content-center">
+                      <div class="col-md-6 mb-4">
+                        <canvas id="sentimentChart"></canvas>
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <canvas id="emotionChart"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- ======= Tambahan: Informasi Dataset ======= -->
+                <section class="section bg-dark text-light py-5" id="dataset-info">
+                  <div class="container" data-aos="fade-up">
+                    <h3 class="text-warning text-center mb-4"><i class="bi bi-folder2-open"></i> Informasi Dataset</h3>
+                    <div class="row justify-content-center">
+                      <div class="col-md-8">
+                        <ul class="list-group">
+                          <li class="list-group-item bg-black text-light d-flex justify-content-between">
+                            <span>Total Ulasan Dianalisis</span><strong>≈ 12.450 ulasan</strong>
+                          </li>
+                          <li class="list-group-item bg-black text-light d-flex justify-content-between">
+                            <span>Jumlah Aplikasi</span><strong>8 Aplikasi Fintech</strong>
+                          </li>
+                          <li class="list-group-item bg-black text-light d-flex justify-content-between">
+                            <span>Model Analisis</span><strong>IndoBERT Multitask (Sentimen + Emosi + Autentikasi)</strong>
+                          </li>
+                          <li class="list-group-item bg-black text-light d-flex justify-content-between">
+                            <span>Tanggal Analisis Terakhir</span><strong>20 Oktober 2025</strong>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- ======= Tambahan: Tabel Detail Hasil Analisis ======= -->
+                <section class="section bg-black text-light py-5" id="table-detail">
+                  <div class="container" data-aos="fade-up">
+                    <h3 class="text-warning text-center mb-4"><i class="bi bi-table"></i> Detail Hasil Analisis per Aplikasi</h3>
+                    <div class="table-responsive">
+                      <table class="table table-dark table-striped table-hover align-middle text-center">
+                        <thead class="table-warning text-dark">
+                          <tr>
+                            <th>Aplikasi</th>
+                            <th>Sentimen Positif</th>
+                            <th>Sentimen Negatif</th>
+                            <th>Sentimen Netral</th>
+                            <th>Keaslian Ulasan</th>
+                            <th>Emosi Dominan</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Akulaku</td><td>68%</td><td>20%</td><td>12%</td><td>92%</td><td>Bahagia</td></tr>
+                          <tr><td>AdaKami</td><td>54%</td><td>26%</td><td>20%</td><td>87%</td><td>Cemas</td></tr>
+                          <tr><td>EasyCash</td><td>30%</td><td>61%</td><td>9%</td><td>80%</td><td>Marah</td></tr>
+                          <tr><td>Tunaiku</td><td>72%</td><td>18%</td><td>10%</td><td>93%</td><td>Bahagia</td></tr>
+                          <tr><td>Pinjam GO</td><td>35%</td><td>59%</td><td>6%</td><td>85%</td><td>Kecewa</td></tr>
+                          <tr><td>Pinjam Winwin</td><td>70%</td><td>20%</td><td>10%</td><td>90%</td><td>Lega</td></tr>
+                          <tr><td>Kredit Pintar</td><td>60%</td><td>24%</td><td>16%</td><td>89%</td><td>Tenang</td></tr>
+                          <tr><td>Julo</td><td>76%</td><td>14%</td><td>10%</td><td>94%</td><td>Puas</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </section>
+
+              <!-- Ringkasan Hasil Analisis -->
+                <div class="analysis-summary mt-5" data-aos="fade-up" data-aos-delay="150">
+                  <h4 class="text-center mb-3"><i class="bi bi-graph-up"></i> Ringkasan Hasil Analisis Keseluruhan</h4>
+                  <p class="text-center mb-4">
+                    Berdasarkan hasil analisis terhadap seluruh aplikasi pinjaman online,
+                    sistem <strong>IndoBERT Multitask Learning</strong> mendeteksi pola umum berikut:
+                  </p>
+
+                  <div class="row text-center">
+                    <div class="col-md-4 mb-4">
+                      <div class="p-3 bg-dark text-light rounded shadow-sm h-100">
+                        <i class="bi bi-emoji-smile fs-2 text-warning"></i>
+                        <h5 class="mt-2">Rata-Rata Sentimen Positif</h5>
+                        <h3 class="fw-bold text-warning">63%</h3>
+                        <p class="small text-muted mb-0">Menunjukkan tingkat kepuasan pengguna yang cukup tinggi.</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                      <div class="p-3 bg-dark text-light rounded shadow-sm h-100">
+                        <i class="bi bi-shield-check fs-2 text-success"></i>
+                        <h5 class="mt-2">Rata-Rata Keaslian Ulasan</h5>
+                        <h3 class="fw-bold text-success">89%</h3>
+                        <p class="small text-muted mb-0">Mayoritas ulasan dianggap asli dan tidak terindikasi bot.</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                      <div class="p-3 bg-dark text-light rounded shadow-sm h-100">
+                        <i class="bi bi-emoji-frown fs-2 text-danger"></i>
+                        <h5 class="mt-2">Sentimen Negatif</h5>
+                        <h3 class="fw-bold text-danger">24%</h3>
+                        <p class="small text-muted mb-0">Didominasi oleh ulasan terkait bunga tinggi & keterlambatan.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="text-center mt-4">
+                    <a href="grafik_statistik.html" class="btn btn-outline-warning btn-lg px-4 py-2">
+                      <i class="bi bi-bar-chart-line"></i> Lihat Statistik Lengkap
+                    </a>
+                  </div>
+                </div>
+
+              <hr>
+              <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="section-header text-center mb-5">
+                  <h2>Daftar Aplikasi yang Telah Dianalisis</h2>
+                  <p>Analisis dilakukan menggunakan model <strong>IndoBERT Multitask</strong> untuk memprediksi
+                    <em>sentimen</em>, <em>emosi</em>, dan <em>keaslian ulasan</em> pengguna terhadap aplikasi pinjaman
+                    online.
+                  </p>
+                </div>
+
+                <div class="row gy-4">
+
+                  <!-- 1. Akulaku -->
+                  <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card h-100 shadow-sm app-card border-0">
+                      <br>
+                      <img src="assets/akulaku.png" class="card-img-top" alt="Akulaku Logo">
+                      <div class="card-body">
+                        <h5 class="card-title">Akulaku</h5>
+                        <p class="card-text small">
+                          😊 Sentimen Positif: 68% <br>
+                          ❤️ Emosi Dominan: Bahagia <br>
+                          🛡️ Keaslian: 92%
+                        </p>
+                      </div>
+                      <div class="card-footer bg-transparent border-0">
+                        <a href="akulaku.html" class="btn btn-sm btn-outline-warning w-100">Lihat Detail</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 2. Adakami -->
+                  <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="card h-100 shadow-sm app-card border-0">
+                      <br>
+                      <img src="assets/adakami.jpeg" class="card-img-top" alt="Adakami Logo">
+                      <div class="card-body">
+                        <h5 class="card-title">Ada Kami</h5>
+                        <p class="card-text small">
+                          😐 Sentimen Netral: 54% <br>
+                          🌧️ Emosi Dominan: Cemas <br>
+                          🛡️ Keaslian: 87%
+                        </p>
+                      </div>
+                      <div class="card-footer bg-transparent border-0">
+                        <a href="hasil-kreditpintar.html" class="btn btn-sm btn-outline-warning w-100">Lihat Detail</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 3. Indodana -->
+                  <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card h-100 shadow-sm app-card border-0"><br>
+                      <img src="assets/easycash.png" class="card-img-top" alt="Indodana Logo">
+                      <div class="card-body">
+                        <h5 class="card-title">Easycash</h5>
+                        <p class="card-text small">
+                          😠 Sentimen Negatif: 61% <br>
+                          ⚡ Emosi Dominan: Marah <br>
+                          🛡️ Keaslian: 80%
+                        </p>
+                      </div>
+                      <div class="card-footer bg-transparent border-0">
+                        <a href="hasil-indodana.html" class="btn btn-sm btn-outline-warning w-100">Lihat Detail</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 4. Tunaiku -->
+                  <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="card h-100 shadow-sm app-card border-0"><br>
+                      <img src="assets/tunaiku.jfif" class="card-img-top" alt="Tunaiku Logo">
+                      <div class="card-body">
+                        <h5 class="card-title">Tunaiku</h5>
+                        <p class="card-text small">
+                          😊 Sentimen Positif: 72% <br>
+                          ❤️ Emosi Dominan: Bahagia <br>
+                          🛡️ Keaslian: 93%
+                        </p>
+                      </div>
+                      <div class="card-footer bg-transparent border-0">
+                        <a href="hasil-tunaiku.html" class="btn btn-sm btn-outline-warning w-100">Lihat Detail</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 5. Rupiah Cepat -->
+                  <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card h-100 shadow-sm app-card border-0"><br>
+                      <img src="assets/pinjamgo.png" class="card-img-top" alt="Rupiah Cepat Logo">
+                      <div class="card-body">
+                        <h5 class="card-title">Pinjam GO</h5>
+                        <p class="card-text small">
+                          😡 Sentimen Negatif: 59% <br>
+                          😞 Emosi Dominan: Kecewa <br>
+                          🛡️ Keaslian: 85%
+                        </p>
+                      </div>
+                      <div class="card-footer bg-transparent border-0">
+                        <a href="hasil-rupiahcepat.html" class="btn btn-sm btn-outline-warning w-100">Lihat Detail</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 6. EasyCash -->
+                  <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="350">
+                    <div class="card h-100 shadow-sm app-card border-0"><br>
+                      <img src="assets/winwin.jpg" class="card-img-top" alt="EasyCash Logo">
+                      <div class="card-body">
+                        <h5 class="card-title">Pinjam Winwin</h5>
+                        <p class="card-text small">
+                          😊 Sentimen Positif: 70% <br>
+                          😌 Emosi Dominan: Lega <br>
+                          🛡️ Keaslian: 90%
+                        </p>
+                      </div>
+                      <div class="card-footer bg-transparent border-0">
+                        <a href="hasil-easycash.html" class="btn btn-sm btn-outline-warning w-100">Lihat Detail</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 7. AdaKami -->
+                  <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="card h-100 shadow-sm app-card border-0"><br>
+                      <img src="assets/kreditpintar.jfif" class="card-img-top" alt="AdaKami Logo">
+                      <div class="card-body">
+                        <h5 class="card-title">Kredit Pintar</h5>
+                        <p class="card-text small">
+                          😐 Sentimen Netral: 60% <br>
+                          ☁️ Emosi Dominan: Tenang <br>
+                          🛡️ Keaslian: 89%
+                        </p>
+                      </div>
+                      <div class="card-footer bg-transparent border-0">
+                        <a href="hasil-adakami.html" class="btn btn-sm btn-outline-warning w-100">Lihat Detail</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 8. Julo -->
+                  <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="450">
+                    <div class="card h-100 shadow-sm app-card border-0"><br>
+                      <img src="assets/indodana.jpg" class="card-img-top" alt="Julo Logo">
+                      <div class="card-body">
+                        <h5 class="card-title">Julo</h5>
+                        <p class="card-text small">
+                          😊 Sentimen Positif: 76% <br>
+                          😍 Emosi Dominan: Puas <br>
+                          🛡️ Keaslian: 94%
+                        </p>
+                      </div>
+                      <div class="card-footer bg-transparent border-0">
+                        <a href="hasil-julo.html" class="btn btn-sm btn-outline-warning w-100">Lihat Detail</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+
+          <div class="col-lg-4 order-lg-2 order-1">
+            <div class="service-sidebar" data-aos="fade-left">
+              <div class="service-features-list" data-aos="fade-up" data-aos-delay="200">
+                 <button class="btn btn-outline-light">
+                  <i class="bi bi-stars"></i> Urutan Rating Terpercaya
+                </button>
+                <p class="small text-muted">Berdasarkan hasil analisis keaslian ulasan pengguna</p>
+                <ul class="list-unstyled mt-3">
+                  <li class="d-flex justify-content-between align-items-center border-bottom py-2">
+                    <span><img src="assets/akulaku.png" width="20" class="me-2"> Akulaku</span>
+                    <strong>92%</strong>
+                  </li>
+                  <li class="d-flex justify-content-between align-items-center border-bottom py-2">
+                    <span><img src="assets/adakami.jpeg" width="20" class="me-2"> Adakami</span>
+                    <strong>94%</strong>
+                  </li>
+                  <li class="d-flex justify-content-between align-items-center border-bottom py-2">
+                    <span><img src="assets/easycash.png" width="20" class="me-2"> EasyCash</span>
+                    <strong>93%</strong>
+                  </li>
+                  <li class="d-flex justify-content-between align-items-center border-bottom py-2">
+                    <span><img src="assets/winwin.jpg" width="20" class="me-2"> Pinjam Winwin</span>
+                    <strong>90%</strong>
+                  </li>
+                  <li class="d-flex justify-content-between align-items-center border-bottom py-2">
+                    <span><img src="assets/tunaiku.jfif" width="20" class="me-2">Tunaiku</span>
+                    <strong>89%</strong>
+                  </li>
+                  <li class="d-flex justify-content-between align-items-center border-bottom py-2">
+                    <span><img src="assets/pinjamgo.png" width="20" class="me-2"> Pinjam GO</span>
+                    <strong>87%</strong>
+                  </li>
+                  <li class="d-flex justify-content-between align-items-center border-bottom py-2">
+                    <span><img src="assets/indodana.jpg" width="20" class="me-2"> Indodana</span>
+                    <strong>85%</strong>
+                  </li>
+                  <li class="d-flex justify-content-between align-items-center border-bottom py-2">
+                    <span><img src="assets/kreditpintar.jfif" width="20" class="me-2"> Kredit Pintar</span>
+                    <strong>80%</strong>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Script -->
+<script>
+  // Sentiment chart
+  const ctx1 = document.getElementById('sentimentChart');
+  new Chart(ctx1, {
+    type: 'doughnut',
+    data: {
+      labels: ['Positif', 'Netral', 'Negatif'],
+      datasets: [{
+        data: [63, 13, 24],
+        backgroundColor: ['#ffc107', '#6c757d', '#dc3545']
+      }]
+    },
+    options: {
+      plugins: { legend: { position: 'bottom' } }
+    }
+  });
+
+  // Emotion chart
+  const ctx2 = document.getElementById('emotionChart');
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: ['Bahagia', 'Cemas', 'Marah', 'Lega', 'Puas', 'Kecewa', 'Tenang'],
+      datasets: [{
+        label: 'Frekuensi Emosi Dominan',
+        data: [28, 14, 11, 9, 7, 6, 5],
+        backgroundColor: '#ffc107'
+      }]
+    },
+    options: {
+      scales: { y: { beginAtZero: true } },
+      plugins: { legend: { display: false } }
+    }
+  });
+</script>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
